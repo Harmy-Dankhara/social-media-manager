@@ -1,3 +1,13 @@
+---
+title: SocialMind AI
+emoji: 🚀
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+---
+
+
 # SocialMind AI 🚀
 
 > AI-powered Social Media Manager SaaS built with React, FastAPI, Gemini AI, SQLite, and JWT Authentication.
