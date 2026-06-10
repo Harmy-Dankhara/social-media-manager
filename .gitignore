@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment Variables
+backend/.env
+
+# Database
+backend/socialmind.db
+
+# Node
+frontend/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
