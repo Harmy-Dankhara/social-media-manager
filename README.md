@@ -1,6 +1,6 @@
 # SocialMind AI 🚀
 
-> AI-powered Social Media Manager SaaS — Powered by LangGraph + RAG + GPT-4o
+> AI-powered Social Media Manager SaaS built with React, FastAPI, Gemini AI, SQLite, and JWT Authentication.
 
 ---
 
