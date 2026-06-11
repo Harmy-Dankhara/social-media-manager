@@ -80,7 +80,13 @@ export default function Landing() {
           variants={stagger}
           initial="hidden"
           animate="show"
-          style={{ maxWidth: 800, position: 'relative', zIndex: 1 }}
+          style={{
+            maxWidth: 800,
+            width: '100%',
+            position: 'relative',
+            zIndex: 1,
+            padding: '0 12px',
+          }}
         >
           <motion.div variants={fadeUp}>
             <span style={{
@@ -117,16 +123,29 @@ export default function Landing() {
           <motion.div variants={fadeUp} style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Button variant="primary" size="xl" onClick={() => navigate('/register')} id="hero-cta-primary">
               Get Started Free
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Button>
             <Button variant="ghost" size="xl" onClick={() => navigate('/login')} id="hero-cta-demo">
               Watch Demo
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" /><path d="M10 8l6 4-6 4V8z" fill="currentColor" /></svg>
             </Button>
           </motion.div>
 
           {/* Social proof */}
-          <motion.div variants={fadeUp} style={{ marginTop: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, color: 'var(--text-muted)', fontSize: 13 }}>
+          <motion.div
+            variants={fadeUp}
+            style={{
+              marginTop: 48,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 24,
+              color: 'var(--text-muted)',
+              fontSize: 13,
+              flexWrap: 'wrap',
+              padding: '0 12px',
+            }}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ color: '#fbbf24' }}>★★★★★</span>
               <span>4.9/5 from 2k+ brands</span>
