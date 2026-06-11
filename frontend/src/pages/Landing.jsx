@@ -47,9 +47,11 @@ export default function Landing() {
       {/* ── Navbar ── */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        padding: '0 40px',
-        height: 64,
+        padding: '0 16px',
+        minHeight: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
         background: 'rgba(10,10,15,0.8)',
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid var(--border-subtle)',
@@ -109,7 +111,7 @@ export default function Landing() {
           >
             Your Brand.{' '}
             <span className="gradient-text">Everywhere.</span>
-            <br />Automatically.
+            <div>Automatically.</div>
           </motion.h1>
 
           <motion.p
