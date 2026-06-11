@@ -44,11 +44,17 @@ async def register(user_data: UserCreate, db: Session = Depends(get_db)):
         )
 
     try:
-        # Create user
+        # Debug prints
+        print("PASSWORD VALUE:", repr(user_data.password))
+        print("PASSWORD TYPE:", type(user_data.password))
+        print("PASSWORD LENGTH:", len(user_data.password))
+
+        hashed_password = get_password_hash(user_data.password)
+
         user = User(
             name=user_data.name,
             email=user_data.email,
-            hashed_password=get_password_hash(user_data.password),
+            hashed_password=hashed_password,
         )
 
         db.add(user)
