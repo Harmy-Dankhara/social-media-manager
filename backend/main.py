@@ -6,6 +6,9 @@ import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 
 from core.config import settings
 from core.websocket_manager import manager
@@ -68,9 +71,7 @@ app.include_router(analytics.router)
 app.include_router(competitors.router)
 
 
-@app.get("/")
-async def root():
-    return {"message": "SocialMind AI API is running 🚀", "version": "1.0.0"}
+
 
 
 @app.get("/health")
@@ -108,3 +109,17 @@ async def websocket_endpoint(websocket: WebSocket, user_id: str):
     except Exception as e:
         logger.error(f"WebSocket error for {user_id}: {e}")
         manager.disconnect(user_id)
+
+# Serve React frontend
+frontend_dist = os.path.join(os.path.dirname(__file__), "../frontend/dist")
+
+if os.path.exists(frontend_dist):
+    app.mount(
+        "/assets",
+        StaticFiles(directory=os.path.join(frontend_dist, "assets")),
+        name="assets",
+    )
+
+    @app.get("/")
+    async def serve_frontend():
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
