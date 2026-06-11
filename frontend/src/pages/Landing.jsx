@@ -87,7 +87,7 @@ export default function Landing() {
             width: '100%',
             position: 'relative',
             zIndex: 1,
-            padding: '0 12px',
+            padding: '0',
           }}
         >
           <motion.div variants={fadeUp}>
@@ -107,11 +107,18 @@ export default function Landing() {
 
           <motion.h1
             variants={fadeUp}
-            style={{ fontFamily: 'Syne', fontSize: 'clamp(40px, 7vw, 76px)', fontWeight: 800, lineHeight: 1.05, marginBottom: 24, letterSpacing: '-1.5px' }}
+            style={{ fontFamily: 'Syne', fontSize: 'clamp(20px, 8.5vw, 76px)', fontWeight: 800, lineHeight: 1.05, marginBottom: 24, letterSpacing: '-1.5px', padding: '0' }}
           >
             Your Brand.{' '}
             <span className="gradient-text">Everywhere.</span>
-            <div>Automatically.</div>
+            <div
+              style={{
+                fontSize: '0.9em',
+                lineHeight: 1.1,
+              }}
+            >
+              Automatically.
+            </div>
           </motion.h1>
 
           <motion.p

@@ -37,7 +37,7 @@ const PLATFORM_ICONS = {
   ),
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   const logout = useAuthStore((s) => s.logout)
   const user = useAuthStore((s) => s.user)
   const navigate = useNavigate()
@@ -63,14 +63,11 @@ export default function Sidebar() {
   }
 
   return (
-    <motion.aside
-      initial={{ x: -240 }}
-      animate={{ x: 0 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+    <aside
+      className={`app-sidebar ${isOpen ? 'open' : ''}`}
       style={{
         position: 'fixed',
         left: 0, top: 0, bottom: 0,
-        width: 'var(--sidebar-width)',
         background: 'var(--bg-sidebar)',
         borderRight: '1px solid var(--border-subtle)',
         display: 'flex',
@@ -80,7 +77,7 @@ export default function Sidebar() {
       }}
     >
       {/* Logo */}
-      <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid var(--border-subtle)' }}>
+      <div style={{ padding: '24px 20px 20px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <motion.div
           style={{ display: 'flex', alignItems: 'center', gap: 10 }}
           whileHover={{ scale: 1.02 }}
@@ -100,12 +97,17 @@ export default function Sidebar() {
             <div style={{ fontSize: 10, color: 'var(--accent-violet-light)', letterSpacing: '1px', textTransform: 'uppercase' }}>AI</div>
           </div>
         </motion.div>
+        
+        {/* Mobile close button */}
+        <button className="sidebar-close-btn" onClick={onClose} aria-label="Close sidebar">
+          ✕
+        </button>
       </div>
 
       {/* Nav */}
       <nav style={{ flex: 1, padding: '16px 10px', display: 'flex', flexDirection: 'column', gap: 4 }}>
         {NAV_ITEMS.map(({ to, label }) => (
-          <NavLink key={to} to={to} id={`nav-${label.toLowerCase().replace(/\s+/g, '-')}`}>
+          <NavLink key={to} to={to} id={`nav-${label.toLowerCase().replace(/\s+/g, '-')}`} onClick={onClose}>
             {({ isActive }) => (
               <motion.div
                 whileHover={{ x: 3 }}
@@ -156,6 +158,7 @@ export default function Sidebar() {
                 className="profile-dropdown-item"
                 onClick={() => {
                   setDropdownOpen(false)
+                  onClose?.()
                   navigate('/settings')
                 }}
               >
@@ -166,6 +169,7 @@ export default function Sidebar() {
                 className="profile-dropdown-item logout-item"
                 onClick={() => {
                   setDropdownOpen(false)
+                  onClose?.()
                   handleLogout()
                 }}
                 style={{ color: '#f87171' }}
@@ -216,6 +220,6 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-    </motion.aside>
+    </aside>
   )
 }
