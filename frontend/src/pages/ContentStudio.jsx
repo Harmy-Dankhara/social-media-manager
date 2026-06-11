@@ -247,7 +247,7 @@ function ScheduleModal({ post, platform, isOpen, onClose, onConfirm }) {
 
 export default function ContentStudio() {
   const { brands, fetchBrands } = useBrandStore()
-  const { generatedPosts, agentSteps, isGenerating, generationComplete, updatePost, clearGeneration, addGeneratedPost } = useContentStore()
+  const { generatedPosts, agentSteps, isGenerating, generationComplete, updatePost, clearGeneration, startGeneration, addGeneratedPost } = useContentStore()
   const [form, setForm] = useState({
     brandId: '',
     platforms: ['instagram'],
@@ -292,7 +292,7 @@ export default function ContentStudio() {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
-    clearGeneration()
+    startGeneration()
 
     // Set active platform to first selected
     if (form.platforms.length > 0) setActivePlatform(form.platforms[0])
