@@ -247,7 +247,7 @@ function ScheduleModal({ post, platform, isOpen, onClose, onConfirm }) {
 
 export default function ContentStudio() {
   const { brands, fetchBrands } = useBrandStore()
-  const { generatedPosts, agentSteps, isGenerating, generationComplete, updatePost, clearGeneration, startGeneration, addGeneratedPost } = useContentStore()
+  const { generatedPosts, agentSteps, isGenerating, generationComplete, updatePost, clearGeneration, startGeneration, addGeneratedPost, setError } = useContentStore()
   const [form, setForm] = useState({
     brandId: '',
     platforms: ['instagram'],
@@ -307,6 +307,7 @@ export default function ContentStudio() {
       })
     } catch (err) {
       toast.error('Failed to start generation')
+      setError(err.response?.data?.detail || 'Failed to start generation')
     }
   }
 

@@ -327,7 +327,7 @@ export default function CompetitorAnalysis() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <Card style={{ padding: 20 }} hover={false}>
               <h3 style={{ fontFamily: 'Syne', fontSize: 15, fontWeight: 700, marginBottom: 16 }}>Saved Competitors</h3>
-              
+
               {loadingList ? (
                 <div style={{ display: 'flex', justifyContent: 'center', padding: 24 }}>
                   <div className="spinner" />

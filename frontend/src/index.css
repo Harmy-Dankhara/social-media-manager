@@ -733,7 +733,7 @@ select {
     max-width: 100%;
   }
 
-  .page-content > *[style*="padding"] {
+  .page-content>*[style*="padding"] {
     padding: 20px 16px !important;
   }
 

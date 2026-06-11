@@ -8,7 +8,7 @@ export default function PageWrapper({ children, title, subtitle }) {
     <div className="app-layout">
       {/* Sidebar with mobile toggle classes and callbacks */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      
+
       {/* Mobile Sticky Header Bar */}
       <div className="mobile-top-nav">
         <button className="mobile-menu-btn" onClick={() => setSidebarOpen(true)} aria-label="Open sidebar menu">
