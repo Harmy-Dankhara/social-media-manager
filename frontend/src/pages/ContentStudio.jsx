@@ -340,10 +340,10 @@ export default function ContentStudio() {
           <p className="page-subtitle">Generate AI-powered content across all your platforms</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 24, alignItems: 'start' }}>
+        <div className="studio-grid">
 
           {/* ── Left Panel: Controls ── */}
-          <Card style={{ padding: 24, position: 'sticky', top: 24 }}>
+          <Card className="studio-sidebar" style={{ padding: 24 }}>
             <h3 style={{ fontFamily: 'Syne', fontSize: 16, fontWeight: 700, marginBottom: 20 }}>Generation Settings</h3>
 
             {/* Brand */}

@@ -144,7 +144,7 @@ export default function Scheduler() {
           </Button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+        <div className="scheduler-grid">
 
           {/* Calendar */}
           <Card style={{ padding: 24 }}>

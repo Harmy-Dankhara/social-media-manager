@@ -698,6 +698,30 @@ select {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.scheduler-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .scheduler-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.studio-sidebar {
+  position: sticky;
+  top: 24px;
+}
+
 @media (max-width: 768px) {
   .mobile-top-nav {
     display: flex;
@@ -733,6 +757,14 @@ select {
 
   .sidebar-close-btn {
     display: flex;
+  }
+
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-sidebar {
+    position: static !important;
   }
 }
 
