@@ -54,7 +54,9 @@ export const brandsAPI = {
   uploadDoc: (brandId, file) => {
     const form = new FormData()
     form.append('file', file)
-    return api.post(`/api/brands/${brandId}/upload-doc`, form)
+    return api.post(`/api/brands/${brandId}/upload-doc`, form, {
+      headers: { 'Content-Type': undefined },
+    })
   },
 }
 
