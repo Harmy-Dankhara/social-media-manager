@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/socialmind"
+    DATABASE_URL: str = "sqlite:///./socialmind.db"
     PINECONE_API_KEY: str = ""
     PINECONE_INDEX_NAME: str = "socialmind"
     GEMINI_API_KEY: str = ""
