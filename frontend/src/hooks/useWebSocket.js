@@ -2,7 +2,11 @@ import { useEffect, useRef, useCallback } from 'react'
 import useAuthStore from '../store/authStore'
 import useContentStore from '../store/contentStore'
 
-const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000'
+const WS_BASE =
+  import.meta.env.VITE_WS_URL ||
+  (window.location.protocol === 'https:'
+    ? `wss://${window.location.host}`
+    : `ws://${window.location.host}`);
 
 let wsInstance = null
 let reconnectTimer = null
@@ -24,8 +28,8 @@ export function useWebSocket() {
     if (!user?.id) return
     if (wsInstance?.readyState === WebSocket.OPEN) return
 
-    const url = `${WS_URL}/ws/${user.id}`
-    wsInstance = new WebSocket(url)
+    const socket = new WebSocket(`${WS_BASE}/ws/${user.id}`)
+    wsInstance = socket
 
     wsInstance.onopen = () => {
       console.log('[WS] Connected')
