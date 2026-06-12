@@ -3,10 +3,9 @@ import useAuthStore from '../store/authStore'
 import useContentStore from '../store/contentStore'
 
 const WS_BASE =
-  import.meta.env.VITE_WS_URL ||
-  (window.location.protocol === 'https:'
+  import.meta.env.PROD
     ? `wss://${window.location.host}`
-    : `ws://${window.location.host}`);
+    : (import.meta.env.VITE_WS_URL || 'ws://localhost:8000');
 
 let wsInstance = null
 let reconnectTimer = null
